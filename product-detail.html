@@ -11,6 +11,8 @@
 </head>
 <body>
 
+  <input type="checkbox" id="theme-toggle" class="theme-toggle-checkbox" />
+  <div class="theme-scope">
   <div class="skip-link-wrap"><a class="skip-link" href="#main-content">Үндсэн хэсэг рүү очих</a></div>
 
   <!-- HEADER -->
@@ -28,6 +30,7 @@
         <a href="admin.html">Удирдлага</a>
       </div>
       <div class="nav-actions">
+        <label for="theme-toggle" class="theme-toggle-label"><span class="sr-only">Dark горим</span></label>
         <a href="cart.html" class="cart-link">Сагс <span class="cart-badge">3</span></a>
         <a href="login.html" class="btn btn-sm btn-primary">Нэвтрэх</a>
       </div>
@@ -144,7 +147,7 @@
         <div class="mt-8">
           <h3 class="mb-4">Сэтгэгдэл үлдээх</h3>
           <form action="#" method="post">
-            <fieldset class="form-section" style="border: none; padding: 0;">
+            <fieldset class="form-section fieldset-unstyled">
               <legend class="sr-only">Сэтгэгдлийн маягт</legend>
               <div class="form-group mb-4">
                 <label for="review-name">Нэр</label>
@@ -270,6 +273,7 @@
     </div>
   </div>
 
+  </div>
 </body>
 </html>
 
