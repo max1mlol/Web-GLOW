@@ -1,10 +1,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Noto+Sans:wght@400;500;600;700;800&family=Noto+Serif:wght@600;700&display=swap');
 
-/* ============================================
-   GLOW Skincare - Main Stylesheet
-   XHTML 1.0 Strict Compatible
-   ============================================ */
-
 /* --- CSS Reset --- */
 *,
 *::before,
@@ -160,7 +155,7 @@ ol {
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(0);
   white-space: nowrap;
   border: 0;
 }
@@ -2445,7 +2440,7 @@ select.form-input {
   overflow: hidden;
   left: -9999px;
   top: 0;
-  clip: rect(0, 0, 0, 0);
+  clip-path: inset(0);
   white-space: nowrap;
   border: 0;
 }
@@ -2473,7 +2468,6 @@ select.form-input {
   width: 20px;
   height: 20px;
   border-radius: 50%;
-  /* Darker toggle circle in light mode to stand out */
   background: var(--color-primary);
   border: 1px solid var(--color-primary-hover);
   transition: transform 0.2s ease;
@@ -2482,12 +2476,12 @@ select.form-input {
 #theme-toggle:checked~.theme-scope .theme-toggle-label::after {
   transform: translateX(16px);
   background: var(--color-card);
-  border-color: rgba(0, 0, 0, 0);
+  border-color: transparent;
 }
 
 #theme-toggle:checked~.theme-scope .theme-toggle-label {
   background: var(--color-primary);
-  border-color: rgba(0, 0, 0, 0);
+  border-color: transparent;
 }
 
 .theme-toggle-label:focus,
