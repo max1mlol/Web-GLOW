@@ -45,7 +45,7 @@
         <span class="breadcrumb-sep">/</span>
         <a href="products.html">Бүтээгдэхүүн</a>
         <span class="breadcrumb-sep">/</span>
-        <span>Гэрэлтүүлэгч Витамин C серум</span>
+        <span id="breadcrumb-product">Product</span>
       </div>
     </div>
   </div>
@@ -55,19 +55,19 @@
     <div class="container">
 
       <!-- PRODUCT DETAIL -->
-      <div class="product-detail">
+      <div class="product-detail" id="product-detail">
         <div class="product-detail-img">
-          <img src="images/product-serum.jpg" alt="Гэрэлтүүлэгч Витамин C серумын сав" width="520" height="520" />
+          <img id="product-image" src="images/product-serum.jpg" alt="Product image" width="520" height="520" />
         </div>
         <div class="product-detail-info">
-          <p class="product-detail-category">Серум</p>
-          <h1>Гэрэлтүүлэгч Витамин C серум</h1>
+          <p class="product-detail-category" id="product-category">Category</p>
+          <h1 id="product-title">Product Name</h1>
           <div class="product-detail-rating">
-            <span class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</span>
-            <span class="rating-text">5-аас 4.8 (234 сэтгэгдэл)</span>
+            <span class="stars" id="product-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</span>
+            <span class="rating-text" id="product-rating-text">4.5 (100)</span>
           </div>
-          <p class="product-detail-price">$58.00 <span class="product-price-original">$72.00</span></p>
-          <p class="product-detail-desc">Манай хамгийн их борлуулалттай энэхүү серум нь 15% L-ascorbic acid, Витамин E, Ferulic Acid-ийг хослуулсан найрлагатай. Хөнгөн бүтэцтэй тул арьсанд хурдан шингэж, нөсөө толбо бүдгэрүүлэх, өнгө жигдрүүлэх, байгалийн гэрэлтэлтийг дэмжинэ.</p>
+          <p class="product-detail-price" id="product-price">$0.00</p>
+          <p class="product-detail-desc" id="product-description">Loading...</p>
 
           <div class="product-detail-actions">
             <div class="qty-control">
@@ -75,14 +75,11 @@
               <span class="qty-value">1</span>
               <span class="qty-btn">+</span>
             </div>
-            <a href="cart.html" class="btn btn-primary btn-lg">Сагсанд нэмэх</a>
+            <a href="cart.html" class="btn btn-primary btn-lg">Сагсанд хийх</a>
           </div>
 
-          <div class="flex gap-2 flex-wrap mb-6">
-            <span class="product-badge badge-sale">Хямдрал</span>
-            <span class="ingredient-tag">гэрэлтүүлнэ</span>
-            <span class="ingredient-tag">арьс арчилгаа</span>
-            <span class="ingredient-tag">vitamin c</span>
+          <div class="flex gap-2 flex-wrap mb-6" id="product-badges">
+            <!-- Tags go here -->
           </div>
         </div>
       </div>
@@ -175,53 +172,16 @@
 
       <!-- RELATED PRODUCTS -->
       <div class="section">
-        <h2 class="text-center mb-6">Танд мөн таалагдаж магадгүй</h2>
-        <div class="products-grid">
-          <div class="product-card">
-            <img src="images/product-moisturizer.jpg" alt="Чийгшүүлэгч тосны сав" class="product-card-img" width="300" height="300" />
-            <div class="product-card-body">
-              <span class="product-card-category">Чийгшүүлэгч</span>
-              <h3><a href="product-detail.html">Гүн чийгшүүлэх тос</a></h3>
-              <p class="product-card-desc">Керамидтай удаан чийгшүүлэх тос.</p>
-              <div class="product-card-footer">
-                <span class="product-price">$45</span>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/product-sunscreen.jpg" alt="SPF 50+ нарны тос" class="product-card-img" width="300" height="300" />
-            <div class="product-card-body">
-              <span class="product-card-category">Нарны тос</span>
-              <h3><a href="product-detail.html">Daily Shield SPF 50+</a></h3>
-              <p class="product-card-desc">Хөнгөн бүтэцтэй эрдэс найрлагатай хамгаалалт.</p>
-              <div class="product-card-footer">
-                <span class="product-price">$38</span>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/product-toner.jpg" alt="Сарнайн тонерын шил" class="product-card-img" width="300" height="300" />
-            <div class="product-card-body">
-              <span class="product-card-category">Тонер</span>
-              <h3><a href="product-detail.html">Тэнцвэржүүлэх сарнайн тонер</a></h3>
-              <p class="product-card-desc">Арьсыг тайвшруулах, нүхжилт арчлах тонер.</p>
-              <div class="product-card-footer">
-                <span class="product-price">$28</span>
-              </div>
-            </div>
-          </div>
-          <div class="product-card">
-            <img src="images/product-oil.jpg" alt="Нүүрний тосны сав" class="product-card-img" width="300" height="300" />
-            <div class="product-card-body">
-              <span class="product-card-category">Тос</span>
-              <h3><a href="product-detail.html">Golden Glow нүүрний тос</a></h3>
-              <p class="product-card-desc">Ноохойн хошуу, арган тосны тэжээллэг хослол.</p>
-              <div class="product-card-footer">
-                <span class="product-price">$62</span>
-              </div>
-            </div>
-          </div>
+        <h2 class="text-center mb-6">Төстэй бүтээгдэхүүнүүд</h2>
+        <div class="products-grid" id="related-products">
+          <!-- Related products render here -->
         </div>
+      </div>
+
+    </div>
+  </div>
+
+  <!-- FOOTER -->
       </div>
 
     </div>
@@ -274,7 +234,7 @@
   </div>
 
   </div>
+  <script type="module" src="app.js"></script>
 </body>
 </html>
-
 

@@ -636,6 +636,34 @@ button {
   margin-left: 6px;
 }
 
+/* --- Favorite Button --- */
+.favorite-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  margin-top: 10px;
+  background: none;
+  border: 1px solid var(--color-border);
+  border-radius: 20px;
+  padding: 4px 14px;
+  font-size: 0.875rem;
+  color: var(--color-text-secondary);
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.favorite-btn:hover {
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.favorite-btn.liked {
+  background-color: #fce4e4;
+  border-color: #e07070;
+  color: #a13333;
+  font-weight: 600;
+}
+
 /* ============================================
    TESTIMONIALS
    ============================================ */
