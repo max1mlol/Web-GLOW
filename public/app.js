@@ -116,48 +116,69 @@ function setText(id, value) {
   if (el) el.textContent = value;
 }
 
-function renderProductDetail(product) {
-  const imageEl = document.getElementById("product-image");
-  const titleEl = document.getElementById("product-title");
-  const categoryEl = document.getElementById("product-category");
-  const starsEl = document.getElementById("product-stars");
-  const ratingTextEl = document.getElementById("product-rating-text");
-  const priceEl = document.getElementById("product-price");
-  const descEl = document.getElementById("product-description");
-  const badgesEl = document.getElementById("product-badges");
+function getProductDetailEls() {
+  return {
+    image: document.getElementById("product-image"),
+    title: document.getElementById("product-title"),
+    category: document.getElementById("product-category"),
+    stars: document.getElementById("product-stars"),
+    ratingText: document.getElementById("product-rating-text"),
+    price: document.getElementById("product-price"),
+    description: document.getElementById("product-description"),
+    badges: document.getElementById("product-badges"),
+  };
+}
 
-  if (imageEl) {
-    imageEl.src = product.image || "images/product-serum.jpg";
-    imageEl.alt = product.name || "Product image";
-  }
+function setProductImage(product, els) {
+  if (!els.image) return;
+  els.image.src = product.image || "images/product-serum.jpg";
+  els.image.alt = product.name || "Product image";
+}
 
-  if (titleEl) titleEl.textContent = product.name;
-  if (categoryEl) categoryEl.textContent = product.category || "";
-  if (starsEl) starsEl.innerHTML = renderStars(product.rating);
-  if (ratingTextEl) {
-    ratingTextEl.textContent = product.ratingCount
+function setProductMeta(product, els) {
+  if (els.title) els.title.textContent = product.name;
+  if (els.category) els.category.textContent = product.category || "";
+  if (els.stars) els.stars.innerHTML = renderStars(product.rating);
+  if (els.ratingText) {
+    els.ratingText.textContent = product.ratingCount
       ? `${product.rating.toFixed(1)} (${product.ratingCount})`
       : product.rating.toFixed(1);
   }
+}
 
-  if (priceEl) {
-    const oldPrice = product.oldPrice ? ` <span class="product-price-original">$${product.oldPrice}</span>` : "";
-    priceEl.innerHTML = `$${product.price}${oldPrice}`;
-  }
+function setProductPrice(product, els) {
+  if (!els.price) return;
+  const oldPrice = product.oldPrice ? ` <span class="product-price-original">$${product.oldPrice}</span>` : "";
+  els.price.innerHTML = `$${product.price}${oldPrice}`;
+}
 
-  if (descEl) descEl.textContent = product.description || "";
+function setProductDescription(product, els) {
+  if (els.description) els.description.textContent = product.description || "";
+}
 
-  if (badgesEl) {
-    const tags = [];
-    if (product.badge) tags.push(`<span class="product-badge badge-sale">${escapeHtml(product.badge)}</span>`);
-    if (product.brand) tags.push(`<span class="ingredient-tag">${escapeHtml(product.brand)}</span>`);
-    if (product.skinType) tags.push(`<span class="ingredient-tag">${escapeHtml(product.skinType)}</span>`);
-    if (product.category) tags.push(`<span class="ingredient-tag">${escapeHtml(product.category)}</span>`);
-    badgesEl.innerHTML = tags.join("");
-  }
+function setProductBadges(product, els) {
+  if (!els.badges) return;
+  const tags = [];
+  if (product.badge) tags.push(`<span class="product-badge badge-sale">${escapeHtml(product.badge)}</span>`);
+  if (product.brand) tags.push(`<span class="ingredient-tag">${escapeHtml(product.brand)}</span>`);
+  if (product.skinType) tags.push(`<span class="ingredient-tag">${escapeHtml(product.skinType)}</span>`);
+  if (product.category) tags.push(`<span class="ingredient-tag">${escapeHtml(product.category)}</span>`);
+  els.badges.innerHTML = tags.join("");
+}
 
+function setProductPageMeta(product) {
   setText("breadcrumb-product", product.name);
   document.title = `${product.name} | GLOW Skincare`;
+}
+
+function renderProductDetail(product) {
+  const els = getProductDetailEls();
+  setProductImage(product, els);
+  setProductMeta(product, els);
+  setProductPrice(product, els);
+  setProductDescription(product, els);
+  setProductBadges(product, els);
+  setProductPageMeta(product);
 }
 
 async function initProducts() {
