@@ -1,4 +1,4 @@
-const DATA_URL = "/api/products?limit=20";
+const DATA_URL = "https://dummyjson.com/products/category/beauty?limit=30";
 
 // Constructor function + prototype methods (single JS file requirement).
 function Product(data) {
@@ -25,8 +25,29 @@ Product.prototype.matchesField = function matchesField(fieldName, value) {
 
 function normalizeProduct(raw) {
   if (!raw || typeof raw !== "object") return null;
-  if (!raw.name) return null;
-  return new Product(raw);
+  if (!raw.name && !raw.title) return null;
+
+  // Map DummyJSON fields → our Product model
+  const mapped = {
+    id:          raw.id,
+    name:        raw.name  || raw.title,
+    price:       raw.price,
+    description: raw.description,
+    category:    raw.category,
+    brand:       raw.brand,
+    image:       raw.image || raw.thumbnail,          // DummyJSON uses "thumbnail"
+    rating:      raw.rating,
+    ratingCount: raw.ratingCount || raw.stock || 0,   // use stock count as a proxy
+    oldPrice:    raw.oldPrice
+                   || (raw.discountPercentage         // calculate original price
+                         ? (raw.price / (1 - raw.discountPercentage / 100)).toFixed(2)
+                         : null),
+    badge:       raw.badge
+                   || (raw.discountPercentage >= 10 ? `${Math.round(raw.discountPercentage)}% OFF` : ""),
+    skinType:    raw.skinType || "",
+  };
+
+  return new Product(mapped);
 }
 
 function escapeHtml(value) {
@@ -80,40 +101,14 @@ function renderProducts(products) {
   if (countEl) countEl.textContent = String(products.length);
   if (!container) return;
 
-  if (!products.length) {
-    container.innerHTML = "";
-    return;
-  }
+  container.innerHTML = "";
 
-  container.innerHTML = products
-    .map((p) => {
-      const price = `$${p.price}`;
-      const oldPrice = p.oldPrice ? ` <span class="product-price-original">$${p.oldPrice}</span>` : "";
-      const badge = p.badge ? `<span class="product-badge badge-sale">${escapeHtml(p.badge)}</span>` : "";
-      const ratingText = p.ratingCount ? `${p.rating.toFixed(1)} (${p.ratingCount})` : p.rating.toFixed(1);
+  if (!products.length) return;
 
-      return `
-        <div class="product-card">
-          <a href="product-detail.html?id=${encodeURIComponent(p.id)}">
-            <img src="${escapeHtml(p.image)}" alt="${escapeHtml(p.name)}" class="product-card-img" width="300" height="300" />
-          </a>
-          <div class="product-card-body">
-            <span class="product-card-category">${escapeHtml(p.category)}</span>
-            <h3><a href="product-detail.html?id=${encodeURIComponent(p.id)}">${escapeHtml(p.name)}</a></h3>
-            <p class="product-card-desc">${escapeHtml(p.description)}</p>
-            <div class="product-card-footer">
-              <span class="product-price">${price}${oldPrice}</span>
-              ${badge}
-            </div>
-            <div class="product-rating mt-2">
-              <span class="stars">${renderStars(p.rating)}</span>
-              <span class="rating-text">${escapeHtml(ratingText)}</span>
-            </div>
-          </div>
-        </div>
-      `;
-    })
-    .join("");
+  // Use the reusable ProductCard component from components.js
+  products.forEach(function (p) {
+    container.appendChild(ProductCard(p));
+  });
 }
 
 function setText(id, value) {
@@ -166,7 +161,6 @@ function renderProductDetail(product) {
 }
 
 async function initProducts() {
-  if (window.location.protocol === "file:") return;
 
   let allProducts = [];
   try {
@@ -181,7 +175,6 @@ async function initProducts() {
 }
 
 async function initProductDetail() {
-  if (window.location.protocol === "file:") return;
 
   const params = new URLSearchParams(window.location.search);
   const idParam = params.get("id");

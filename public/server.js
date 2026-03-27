@@ -38,7 +38,6 @@ app.get("/api/products", async (req, res) => {
         id: p.id,
         name: p.title,
         price: p.price,
-        // Old fields are optional. We keep them for your existing UI.
         oldPrice: oldPrice,
         badge: hasDiscount ? String(discount.toFixed(0)) + "% off" : "",
         description: p.description,
