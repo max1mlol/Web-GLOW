@@ -57,22 +57,48 @@
         <!-- SIDEBAR -->
         <div class="products-sidebar">
           <div class="filter-group">
+            <h4>Хайлт</h4>
+            <form action="#" method="get" class="search-box">
+              <div>
+                <label for="search-input" class="sr-only">Бүтээгдэхүүн хайх</label>
+                <input type="text" id="search-input" name="q" />
+              </div>
+            </form>
+          </div>
+
+          <div class="filter-group">
             <h4>Ангилал</h4>
             <ul>
-              <li><a href="products.html" class="active">Бүгд</a></li>
-              <li><a href="products.html?category=beauty">beauty</a></li>
-              <li><a href="products.html?category=fragrances">fragrances</a></li>
-              <li><a href="products.html?category=laptops">laptops</a></li>
-              <li><a href="products.html?category=mens-shirts">mens-shirts</a></li>
+              <li><a href="products.html" class="filter-category-link active" data-category="">Бүгд</a></li>
+              <li><a href="products.html?category=%D0%A1%D0%B5%D1%80%D1%83%D0%BC" class="filter-category-link" data-category="Серум">Серум</a></li>
+              <li><a href="products.html?category=%D0%A7%D0%B8%D0%B9%D0%B3%D1%88%D2%AF%D2%AF%D0%BB%D1%8D%D0%B3%D1%87" class="filter-category-link" data-category="Чийгшүүлэгч">Чийгшүүлэгч</a></li>
+              <li><a href="products.html?category=%D0%A6%D1%8D%D0%B2%D1%8D%D1%80%D0%BB%D1%8D%D0%B3%D1%87" class="filter-category-link" data-category="Цэвэрлэгч">Цэвэрлэгч</a></li>
+              <li><a href="products.html?category=%D0%A2%D0%BE%D0%BD%D0%B5%D1%80" class="filter-category-link" data-category="Тонер">Тонер</a></li>
+              <li><a href="products.html?category=%D0%9D%D0%B0%D1%80%D0%BD%D1%8B+%D1%82%D0%BE%D1%81" class="filter-category-link" data-category="Нарны тос">Нарны тос</a></li>
+              <li><a href="products.html?category=%D0%9C%D0%B0%D1%81%D0%BA" class="filter-category-link" data-category="Маск">Маск</a></li>
+              <li><a href="products.html?category=%D0%9D%D2%AF%D0%B4%D0%BD%D0%B8%D0%B9+%D0%B0%D1%80%D1%87%D0%B8%D0%BB%D0%B3%D0%B0%D0%B0" class="filter-category-link" data-category="Нүдний арчилгаа">Нүдний арчилгаа</a></li>
+              <li><a href="products.html?category=%D0%A2%D0%BE%D1%81" class="filter-category-link" data-category="Тос">Тос</a></li>
             </ul>
           </div>
 
           <div class="filter-group">
-            <h4>Брэнд</h4>
+            <h4>Арьсны төрөл</h4>
             <ul>
-              <li><a href="products.html">Бүх брэнд</a></li>
-              <li><a href="products.html?brand=Essence">Essence</a></li>
-              <li><a href="products.html?brand=Glamour Beauty">Glamour Beauty</a></li>
+              <li><a href="products.html">Бүх төрлийн арьс</a></li>
+              <li><a href="products.html?skinType=%D0%A5%D1%83%D1%83%D1%80%D0%B0%D0%B9+%D0%B0%D1%80%D1%8C%D1%81">Хуурай арьс</a></li>
+              <li><a href="products.html?skinType=%D0%A2%D0%BE%D1%81%D0%BB%D0%BE%D0%B3+%D0%B0%D1%80%D1%8C%D1%81">Тослог арьс</a></li>
+              <li><a href="products.html?skinType=%D0%9C%D1%8D%D0%B4%D1%80%D1%8D%D0%BC%D1%82%D0%B3%D0%B8%D0%B9+%D0%B0%D1%80%D1%8C%D1%81">Мэдрэмтгий арьс</a></li>
+              <li><a href="products.html?skinType=%D0%A5%D0%BE%D0%BB%D0%B8%D0%BC%D0%BE%D0%B3+%D0%B0%D1%80%D1%8C%D1%81">Холимог арьс</a></li>
+            </ul>
+          </div>
+
+          <div class="filter-group">
+            <h4>Үнийн шүүлтүүр</h4>
+            <ul>
+              <li><a href="products.html?maxPrice=30">$30-аас доош</a></li>
+              <li><a href="products.html?minPrice=30&amp;maxPrice=50">$30 - $50</a></li>
+              <li><a href="products.html?minPrice=50&amp;maxPrice=70">$50 - $70</a></li>
+              <li><a href="products.html?minPrice=70">$70-аас дээш</a></li>
             </ul>
           </div>
         </div>
@@ -81,10 +107,20 @@
         <div class="products-main">
           <div class="products-toolbar">
             <p class="products-count"><strong>8</strong> бүтээгдэхүүн харагдаж байна</p>
+            <div>
+              <label for="sort-select" class="sr-only">Эрэмбэлэх</label>
+              <select id="sort-select" class="sort-select" name="sort">
+                <option value="featured" selected="selected">Эрэмбэлэх: Онцлох</option>
+                <option value="price-low">Үнэ: Багаас их</option>
+                <option value="price-high">Үнэ: Ихээс бага</option>
+                <option value="rating">Өндөр үнэлгээтэй</option>
+                <option value="name">Нэрийн дарааллаар</option>
+              </select>
+            </div>
           </div>
 
-          <div class="products-grid-3col" id="products-grid">
-            <!-- Products will be rendered here by public/app.js -->
+          <div id="products-grid" class="products-grid-3col">
+            <!-- Карточнуудыг products.js модуль динамикаар бөглөнө -->
           </div>
         </div>
 
@@ -139,8 +175,8 @@
   </div>
 
   </div>
-  <script src="js/components.js"></script>
-  <script type="module" src="app.js"></script>
+
+  <script type="module" src="js/products.js"></script>
 </body>
 </html>
 
