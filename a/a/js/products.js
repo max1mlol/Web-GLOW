@@ -21,7 +21,6 @@ const sortSelect = document.getElementById('sort-select');
 const searchInput = document.getElementById('search-input');
 const searchForm = document.querySelector('.search-box');
 
-// Member C
 // getUrlParams — URL-ийн query параметрүүдийг объект болгон авна
 // Жишээ URL: products.html?category=Серум&skinType=Хуурай+арьс&sort=rating
 // Буцаах: { category: "Серум", skinType: "Хуурай арьс", sort: "rating", ... }
@@ -38,7 +37,6 @@ function getUrlParams() {
   };
 }
 
-// Member C
 // updateUrl — URL-г хуудас refresh хийлгүйгээр шинэчлэнэ
 // Sort, search, шүүлтүүрийн badge хасах зэрэг аливаа параметр өөрчлөгдөхөд дуудагдана.
 function updateUrl(params) {
@@ -56,7 +54,6 @@ function updateUrl(params) {
   history.pushState({}, '', newUrl);
 }
 
-// Member B
 // updateActiveFilters — sidebar-ийн холбоосуудыг тохируулах
 // Одоогийн URL параметртэй тохирох холбоосыг "active" болгоно.
 function updateActiveFilters(params) {
@@ -77,7 +74,6 @@ function updateActiveFilters(params) {
   }
 }
 
-// Member A
 // updatePageTitle — хуудасны гарчиг + тоолуурыг шинэчлэнэ
 function updatePageTitle(params, count) {
   // H1 гарчиг
@@ -94,7 +90,6 @@ function updatePageTitle(params, count) {
   }
 }
 
-// Member B
 // renderActiveFilterBadges — идэвхтэй шүүлтүүрүүдийг харуулна
 function renderActiveFilterBadges(params) {
   let container = document.getElementById('active-filters-bar');
@@ -159,8 +154,6 @@ function renderActiveFilterBadges(params) {
   }
 }
 
-
-// Member A
 // renderProducts — grid дэх card-нуудыг зурна
 // Аргументууд:
 // products — Product объектуудын массив (шүүгдсэн + эрэмбэлэгдсэн)
@@ -191,7 +184,6 @@ function renderProducts(products) {
   });
 }
 
-// Member C
 // renderAll — бүх render үйлдлийг нэгтгэсэн функц
 // Sort, Search, Badge, ProductGrid зэргийг цэгцтэй дуудна.
 function renderAll(params) {
@@ -214,7 +206,6 @@ function renderAll(params) {
   renderProducts(sorted);
 }
 
-// Member C
 // init — хуудас ачааллахад нэг удаа дуудагдана
 async function init() {
   // Loading харуулна
@@ -231,7 +222,6 @@ async function init() {
   renderAll(params);
 }
 
-// Member C
 // Sort select — сонголт өөрчлөгдөхөд
 if (sortSelect) {
   sortSelect.addEventListener('change', () => {

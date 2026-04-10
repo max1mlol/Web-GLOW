@@ -3,7 +3,6 @@
 // JSONBin.io дээр байрлуулсан өгөгдлийн URL
 const JSONBIN_URL = 'https://api.jsonbin.io/v3/b/69d0ddeeaaba882197c360de';
 
-// Member A
 // Product класс — бүтээгдэхүүний загвар (model)
 // Бүх шинж чанар (property) constructor-т тодорхойлогдоно.
 class Product {
@@ -42,7 +41,6 @@ class Product {
 // Шүүлт болон эрэмбэлэлт энэ хүснэгт дотроос хийгдэнэ.
 let productTable = [];
 
-// Member A
 // fetchProducts — серверээс өгөгдөл татах
 // Хэрэв productTable өмнө нь дүүрсэн бол дахин fetch хийхгүй.
 async function fetchProducts() {
@@ -75,7 +73,6 @@ async function fetchProducts() {
   }
 }
 
-// Member B
 // filterProducts — хүснэгт дотроос шүүлт хийх
 //
 // params объект дараах шинж чанартай байж болно:
@@ -119,7 +116,6 @@ function filterProducts(params = {}) {
   });
 }
 
-// Member B
 // sortProducts — эрэмбэлэх
 // Эх массивыг өөрчлөхгүйн тулд [...spread] ашиглана.
 function sortProducts(products, sortBy = 'featured') {
