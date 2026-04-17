@@ -1,8 +1,0 @@
-{
-  "name": "glow-4",
-  "version": "1.0.0",
-  "description": "GLOW Skincare web application",
-  "scripts": {
-    "start": "node server"
-  }
-}
