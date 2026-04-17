@@ -21,6 +21,6 @@ function Product(data) {
 // onAddToCart duudaj bolno callback
 Product.prototype.render = function (onAddToCart) {
   return ProductCard(this, onAddToCart);
-};
+}; // hasah
 
 export default Product;

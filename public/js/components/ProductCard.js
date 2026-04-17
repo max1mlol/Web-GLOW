@@ -10,6 +10,8 @@ returns: a DOM element (product card) with favorite/like toggle
 import StarRating from './StarRating.js';
 
 function ProductCard(product, onAddToCart) {
+  // this.product = product;
+  // this.product.like
   // --- local like state ---
   let liked = false;
   let likeCount = product.likeCount || 0;
@@ -80,3 +82,4 @@ function ProductCard(product, onAddToCart) {
 }
 
 export default ProductCard;
+// tur burd ni method bolgoh uurchluh neg method ba controller bas neg method
